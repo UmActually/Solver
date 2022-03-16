@@ -90,11 +90,6 @@ func gaussEliminate(_ matrix: [[Double]]) -> Bool {
             print("")
         }
     }
-
-    if !verbose {
-        print(tabulate(matrix))
-        print("")
-    }
     
     // Despejar las incógnitas
 
@@ -108,14 +103,14 @@ func gaussEliminate(_ matrix: [[Double]]) -> Bool {
         incognitas[index] = x
     }
     
-    var resp = false
+    var wasUseless = false
     for (i, x) in incognitas.enumerated() {
-        resp = resp || x.isNaN
+        wasUseless = wasUseless || x.isNaN
         print("x\(i + 1) = \(x)")
     }
     print("")
     
-    return !resp
+    return !wasUseless
 }
 
 print("Núm Incógnitas?", terminator: " ")
